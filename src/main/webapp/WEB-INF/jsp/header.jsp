@@ -24,12 +24,12 @@
                           <h1>ログイン</h1>
                       </div>
                       <div class="modal-body">
-                          <form action="" method="post">
-                              メールアドレス<input type="text" name=loginId""><br>
-                              パスワード   <input type="passwod" name="password"><br>
+                          <form action="/TeraNavi/front/login" method="post">
+                              ログインID <input type="text" name="loginId"><br>
+                              パスワード <input type="password" name="password"><br>
                               <input type="submit" value="ログイン">
                           </form>
-                          <a href="">パスワード忘れ</a>
+                          <a href="/TeraNavi/reset">パスワード忘れ</a>
                       </div>
                       <div class="modal-footer"></div>
                   </div><!--end moal-content-->
