@@ -86,9 +86,18 @@ public class BlogDao implements AbstractDao{
         try{
             Connection cn = null;
             cn = MySqlConnectionManager.getInstance().getConnection();
-            String sql = "select blog_title,blog_header_path,blog_explanation from users where blog_status_flag = 1";
-
-            pst = cn.prepareStatement(sql);
+            StringBuffer sql = new StringBuffer();
+			
+			sql.append("select blog_title,");
+			sql.append("blog_header_path,blog_explanation ");
+			sql.append("from users where blog_status_flag = 1");
+			
+			if(map.containsKey("sort")){
+				sql.append((String)map.get("sort"));
+			}
+			
+			
+            pst = cn.prepareStatement(new String(sql));
 
             ResultSet rs = pst.executeQuery();
 

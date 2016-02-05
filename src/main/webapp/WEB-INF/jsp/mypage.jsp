@@ -48,7 +48,7 @@
                <form action="front/showchat" method="post">
                    チャット受信<input type="text" name="topicId">
                </form>
-               <a href="後でいれｔ">大会</a><br><br>
+               <a href="後でいれｔ">退会</a><br><br>
                <a href="search">検索</a><br><br>
 
            </div>

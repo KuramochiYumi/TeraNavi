@@ -20,112 +20,99 @@
     <jsp:include page="/WEB-INF/jsp/header.jsp"/>
 
     <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="lead nav nav-justified nav-tabs">
-              <li class="active">
-                <a href="#top" data-toggle="tab" class="text-warning" >TOP</a>
-              </li>
-              <li>
-                <a href="#blog" data-toggle="tab" class="text-warning" >ブログ</a>
-              </li>
-              <li>
-                <a href="#community" data-toggle="tab" class="text-warning" >コミュニティ</a>
-              </li>
-              <li>
-                <a href="#tag" data-toggle="tab" class="text-warning" >タグ</a>
-              </li>
-              <li>
-                <a href="#mypage" data-toggle="tab" class="text-warning" >マイページ</a>
-              </li>
-            </ul>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <ul class="lead nav nav-justified nav-tabs">
+                <li class="active">
+                  <a href="#top" data-toggle="tab" class="text-warning">TOP</a>
+                </li>
+                <li>
+                  <a href="#blog" data-toggle="tab" class="text-warning">ブログ</a>
+                </li>
+                <li>
+                  <a href="#community" data-toggle="tab" class="text-warning">コミュニティ</a>
+                </li>
+                <li>
+                  <a href="#tag" data-toggle="tab" class="text-warning">タグ</a>
+                </li>
+                <li>
+                  <a href="#mypage" data-toggle="tab" class="text-warning">マイページ</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <h1 class="text-warning">新着記事</h1>
-        <div class="row well">
-          <div class="col-md-2">
-            <br>
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive">
-            <a href=""><h3 class="text-center text-muted">ユーザ名</h3></a>
-          </div>
-          <div class="col-md-8">
-            <a href=""><h2 class="text-muted">記事タイトル</h2></a>
-            <p>記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事</p>
-            <div class="text-right">
-              <a class="btn btn-warning">続きを読む</a>
+     <div class="tab-content">
+          <div class="tab-pane active" id="top">
+              <div class="section">
+                <div class="container">
+                  <h1 class="text-warning col-md-offset-1">新着記事</h1>
+					<c:forEach var="article" items="${result.article}">
+						<div class="row col-md-10 col-md-offset-1 well">
+							<div class="col-md-2">
+							  <br>
+							  <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive">
+							  <a href=""><h3 class="text-center text-muted">ユーザ名</h3></a>
+							</div>
+							<div class="col-md-7">
+							  <a href=""><h2 class="text-muted">${article.title}</h2></a>
+							  <p>${article.articleBody}</p>
+							  <div class="text-right">
+								<a class="btn btn-warning">続きを読む</a>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<br><br>
+								<p>投稿日時 ${article.createdDate}</p>
+								<br>
+								<p>コメント数 2</p>
+							</div>
+						</div>
+					</c:forEach>
+			        <h1 class="text-warning col-md-offset-3">お気に入りユーザーの新着記事</h1>
+					<div class="row col-md-10 col-md-offset-1 well">
+						<div class="col-md-2">
+						<br>
+						<img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive">
+						<a href=""><h3 class="text-center text-muted">ユーザ名</h3></a>
+					</div>
+					<div class="col-md-7">
+						<a href=""><h2 class="text-muted">記事タイトル</h2></a>
+						<p>記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
+                      ...</p>
+						<div class="text-right">
+							<a class="btn btn-warning">続きを読む</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<br><br>
+						<p>投稿日時 2016年2月1日</p>
+						<br>
+						<p>コメント数 2</p>
+					</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<a href="login">ログイン画面</a>
+				<br>
+				<br>
+				<a href="mypage">マイページ</a>
+				<br>
+				<br>
+				<a href="#" onclick="document.comForm.submit();">コミュニティ一覧</a>
+				<form action="/TeraNavi/front/commList" method="post" name="comForm">
+					<input type="hidden" name="intention" value="list">
+				</form>
             </div>
-          </div>
-          <div class="col-md-2">
-            <br>
-            <br>
-            <p>投稿日時 2016年2月1日</p>
-          <br>
-            <p>コメント数 2</p>
-          </div>
         </div>
-        <div class="row well">
-          <div class="col-md-2">
-            <br>
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive">
-            <a href=""><h3 class="text-center text-muted">ユーザ名</h3></a>
-          </div>
-          <div class="col-md-8">
-            <a href=""><h2 class="text-muted">記事タイトル</h2></a>
-            <p>記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事</p>
-            <div class="text-right">
-              <a class="btn btn-warning">続きを読む</a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <br>
-            <br>
-            <p>投稿日時 2016年2月1日</p>
-            <br>
-            <p>コメント数 2</p>
-          </div>
-        </div>
-        <div class="row well">
-          <div class="col-md-2">
-            <br>
-            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png" class="img-responsive">
-            <a href=""><h3 class="text-center text-muted">ユーザ名</h3></a>
-          </div>
-          <div class="col-md-8">
-            <a href=""><h2 class="text-muted">記事タイトル</h2></a>
-            <p>記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文 記事の本文記事の本文記事の本文記事の本文記事の本文
-              記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事の本文記事</p>
-            <div class="text-right">
-              <a class="btn btn-warning">続きを読む</a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <br>
-            <br>
-            <p>投稿日時 2016年2月1日</p>
-            <br>
-            <p>コメント数 2</p>
-          </div>
-        </div>
-
-    </div>
-    </div>
-    <br><br>
-    <a href="login">ログイン画面</a><br><br>
-    <a href="mypage">マイページ</a><br><br>
-    <a href="#" onclick="document.comForm.submit();">コミュニティ一覧</a>
-    <form action="/TeraNavi/front/commList" method="post" name="comForm">
-        <input type="hidden" name="intention" value="list">
-    </form>
+        <div class="tab-pane" id="blog"></div>
+        <div class="tab-pane" id="community"></div>
+        <div class="tab-pane" id="tag"></div>
+        <div class="tab-pane" id="mypage"></div>
+    </div><!-- tab-content -->
 
     <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
 
